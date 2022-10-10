@@ -11,6 +11,7 @@ export const GlobalStyles = createGlobalStyle`
 		${({ theme }) => css`
 			background-color: ${theme.colors.background};
 			color: ${theme.colors.font};
+			font-family: ${theme.fonts.main};
 		`}
 	}
 
