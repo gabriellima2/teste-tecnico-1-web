@@ -1,43 +1,57 @@
 import { useParams } from "react-router-dom";
+
 import { useFetch } from "../../hooks/useFetch";
 
 import { DefaultLayout } from "../../layouts/DefaultLayout";
-import { CharacterDetailsData } from "../../types";
+
+import {
+	SpecieInfoInPortuguese,
+	StatusInfoInPortuguese,
+} from "../../constants";
+import type { CharacterDetailsData } from "../../types";
+
+import { MainDetails, Content, Episodes, Image, Name, Text } from "./styles";
 
 export const DetailsPage = () => {
 	const { id } = useParams();
 	const { data, errors, isLoading } = useFetch<CharacterDetailsData>(
-		`https://rickandmortyapi.com/api/character/${id}`
+		`https://rickandmortyapi.com/api/character/${id}`,
+		[]
 	);
 
 	if (isLoading) return <p>Carregando...</p>;
 
 	if (errors) return <p>Ocorreu um erro!</p>;
 
+	const textsInfo = [
+		{ title: "Localização", value: data.location.name },
+		{ title: "Origem", value: data.origin.name },
+		{ title: "Espécie", value: SpecieInfoInPortuguese[data.species] },
+		{ title: "Status", value: StatusInfoInPortuguese[data.status] },
+	];
+
 	return (
 		<DefaultLayout>
-			<main>
-				<img src={data.image} alt={`Imagem do personagem ${data.name}`} />
+			<MainDetails>
+				<Image src={data.image} alt={`Imagem do personagem ${data.name}`} />
 
-				<section>
-					<h1>{data.name}</h1>
-					<div>
-						<p>
-							Origem:
-							{data.origin.name !== "unknown"
-								? data.origin.name
-								: "Desconhecida"}
-						</p>
-						<p>
-							Localização:
-							{data.location.name !== "unknown"
-								? data.location.name
-								: "Desconhecida"}
-						</p>
-					</div>
-					<p>Número de epsódios {data.episode.length}</p>
-				</section>
-			</main>
+				<Content>
+					<Name>{data.name}</Name>
+					<section>
+						<ul>
+							{textsInfo.map((text, index) => (
+								<li key={index}>
+									<Text>
+										<span>{text.title}:</span> {""}
+										{text.value === "unknown" ? "Sem Informações" : text.value}
+									</Text>
+								</li>
+							))}
+						</ul>
+					</section>
+					<Episodes>Total de epsódios {data.episode.length}</Episodes>
+				</Content>
+			</MainDetails>
 		</DefaultLayout>
 	);
 };
