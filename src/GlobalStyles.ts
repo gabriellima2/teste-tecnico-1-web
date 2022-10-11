@@ -15,6 +15,12 @@ export const GlobalStyles = createGlobalStyle`
 		`}
 	}
 
+	#root {
+		${({ theme }) => css`
+			padding: 0px ${theme.spaces[4]};
+		`}
+	}
+
 	a, button {
 		${({ theme }) => css`
 			color: ${theme.colors.font};
@@ -27,5 +33,29 @@ export const GlobalStyles = createGlobalStyle`
 
 	a {
 		text-decoration: none;
+	}
+
+	button, input {
+		${({ theme }) => css`
+			font-family: ${theme.fonts.main};
+		`}
+	}
+
+	button {
+		border: none;
+	}
+
+	input {
+
+		${({ theme }) => css`
+			background: none;
+			outline: none;
+			border: none;
+
+			color: ${theme.colors.font};
+		`}
+
+
+
 	}
 `;

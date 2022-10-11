@@ -1,4 +1,5 @@
 import { Characters } from "../../components/Characters";
+import { SearchBar } from "../../components/SearchBar";
 
 import { DefaultLayout } from "../../layouts/DefaultLayout";
 
@@ -8,6 +9,7 @@ export const HomePage = () => {
 	return (
 		<DefaultLayout>
 			<Main>
+				<SearchBar />
 				<Characters />
 			</Main>
 		</DefaultLayout>
