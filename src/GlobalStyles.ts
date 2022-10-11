@@ -7,6 +7,10 @@ export const GlobalStyles = createGlobalStyle`
 		margin: 0;
 	}
 
+	html,body {
+		overflow-x: hidden;
+	}
+
 	body {
 		${({ theme }) => css`
 			background-color: ${theme.colors.background};
@@ -20,6 +24,7 @@ export const GlobalStyles = createGlobalStyle`
 			display: flex;
 			align-items: center;
 			justify-content: center;
+			flex-direction: column;
 
 			padding: 0px ${theme.spaces[6]};
 		`}

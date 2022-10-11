@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 
 import { useFetch } from "../../hooks/useFetch";
 
-import { DefaultLayout } from "../../layouts/DefaultLayout";
+import { CustomizedLayout } from "../../layouts/CustomizedLayout";
 
 import {
 	SpecieInfoInPortuguese,
@@ -31,7 +31,7 @@ export const DetailsPage = () => {
 	];
 
 	return (
-		<DefaultLayout>
+		<CustomizedLayout>
 			<MainDetails>
 				<Image src={data.image} alt={`Imagem do personagem ${data.name}`} />
 
@@ -52,6 +52,6 @@ export const DetailsPage = () => {
 					<Episodes>Total de epsódios {data.episode.length}</Episodes>
 				</Content>
 			</MainDetails>
-		</DefaultLayout>
+		</CustomizedLayout>
 	);
 };
