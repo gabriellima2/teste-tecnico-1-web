@@ -34,12 +34,7 @@ export const Image = styled.img`
 		max-width: 200px;
 		max-height: 210px;
 
-		${theme["@bp2"]} {
-			max-width: 270px;
-			max-height: 280px;
-		}
-
-		${theme["@bp3"]} {
+		${theme["@bp1"]} {
 			max-width: none;
 			max-height: none;
 		}
