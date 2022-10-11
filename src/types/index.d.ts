@@ -6,13 +6,14 @@ export type WithChildren<T = unknown> = {
 
 export interface Option {
 	value: string;
-	text: string;
+	display: string;
 }
 
 export interface CharacterData {
 	id: number;
 	name: string;
 	status: "Dead" | "Alive" | "unknown";
+	species: "Human" | "Alien";
 	image: string;
 }
 
