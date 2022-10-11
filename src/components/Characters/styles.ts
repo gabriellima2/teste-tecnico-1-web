@@ -1,25 +1,45 @@
 import styled, { css } from "styled-components";
+import { Link } from "react-router-dom";
 
 export const List = styled.ul`
 	${({ theme }) => css`
 		width: 100%;
 
 		display: flex;
-		justify-content: center;
 		align-items: center;
+		justify-content: center;
 		flex-wrap: wrap;
 
 		gap: ${theme.spaces[4]};
+
+		${theme["@bp1"]} {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			grid-template-rows: auto;
+		}
+
+		${theme["@bp3"]} {
+			grid-template-columns: repeat(3, 1fr);
+		}
+
+		${theme["@bp4"]} {
+			grid-template-columns: repeat(4, 1fr);
+		}
 	`}
 `;
 
 export const ListItem = styled.li`
-	position: relative;
-	border: "1px solid transparent";
+	${({ theme }) => css`
+		width: 100%;
+		max-width: 220px;
 
-	&:hover {
-		border-color: #fff;
-	}
+		position: relative;
+		border: "1px solid transparent";
+
+		${theme["@bp1"]} {
+			max-width: none;
+		}
+	`}
 `;
 
 export const Content = styled.div`
@@ -29,16 +49,30 @@ export const Content = styled.div`
 	flex-direction: column;
 `;
 
-export const Image = styled.img`
-	${({ theme }) => css`
-		max-width: 200px;
-		max-height: 210px;
+export const ItemLink = styled(Link)`
+	&::after {
+		content: "";
+		display: block;
 
-		${theme["@bp1"]} {
-			max-width: none;
-			max-height: none;
-		}
-	`}
+		width: 100%;
+		height: 100%;
+
+		position: absolute;
+		top: 0;
+		left: 0;
+
+		background: transparent;
+		transition: background 0.4s ease;
+	}
+
+	&:hover::after,
+	&:focus::after {
+		background: rgba(0, 0, 0, 0.2);
+	}
+`;
+
+export const Image = styled.img`
+	width: 100%;
 `;
 
 export const Name = styled.p`

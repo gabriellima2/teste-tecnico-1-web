@@ -9,39 +9,55 @@ export const Container = styled.div`
 		justify-content: center;
 
 		padding: ${theme.spaces[8]} 0px;
-
-		${theme["@bp2"]} {
-			max-width: 600px;
-		}
 	`}
 `;
 
 export const Input = styled.input`
 	${({ theme }) => css`
 		width: 100%;
+		height: 40px;
 
-		padding: ${theme.spaces[2]} ${theme.spaces[3]};
+		padding: ${theme.spaces[4]};
 
 		font-size: 0.9rem;
 
-		border-bottom: 1px solid ${theme.colors.util};
+		border-top-left-radius: 16px;
+		border-bottom-left-radius: 16px;
+		border: 2px solid ${theme.colors.util};
 
 		&:focus {
-			border-bottom-color: ${theme.colors.main};
+			border-color: ${theme.colors.main};
+		}
+
+		${theme["@bp1"]} {
+			height: 52px;
+
+			font-size: ${theme.fontSizes[1]};
 		}
 	`}
 `;
 
 export const SearchButton = styled.button`
 	${({ theme }) => css`
-		padding: ${theme.spaces[3]};
+		height: 40px;
+
+		padding: 0px ${theme.spaces[4]};
+
+		border-top-right-radius: 16px;
+		border-bottom-right-radius: 16px;
 
 		cursor: pointer;
 		background-color: ${theme.colors.util};
 
+		transition: opacity 0.2s ease;
+
 		&:hover {
-			transition: opacity 0.2s ease;
 			opacity: 0.8;
+		}
+
+		${theme["@bp1"]} {
+			height: 52px;
+			padding: 0px ${theme.spaces[6]};
 		}
 	`}
 `;

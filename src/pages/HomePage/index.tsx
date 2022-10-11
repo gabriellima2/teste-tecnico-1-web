@@ -8,7 +8,7 @@ import { SearchBar } from "../../components/SearchBar";
 import { DefaultLayout } from "../../layouts/DefaultLayout";
 
 import type { CharacterData } from "../../types";
-import { Main } from "./styles";
+import { Main, Header } from "./styles";
 
 interface Data {
 	results: CharacterData[];
@@ -38,9 +38,9 @@ export const HomePage = () => {
 	return (
 		<DefaultLayout>
 			<Main>
-				<header>
+				<Header>
 					<SearchBar value={searchValue} updateValue={setSearchValue} />
-				</header>
+				</Header>
 
 				<section>
 					<Characters characters={searchValue ? dataFiltered : data.results} />

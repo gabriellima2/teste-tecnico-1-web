@@ -1,5 +1,9 @@
 import styled, { css } from "styled-components";
 
+export const Header = styled.header`
+	width: 100%;
+`;
+
 export const Main = styled.main`
 	${({ theme }) => css`
 		display: flex;
@@ -7,8 +11,8 @@ export const Main = styled.main`
 		justify-content: center;
 		align-items: center;
 
-		${theme["@bp4"]} {
-			max-width: 90%;
+		${theme["@bp3"]} {
+			max-width: 1400px;
 		}
 	`}
 `;

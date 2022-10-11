@@ -17,7 +17,11 @@ export const GlobalStyles = createGlobalStyle`
 
 	#root {
 		${({ theme }) => css`
-			padding: 0px ${theme.spaces[4]};
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			padding: 0px ${theme.spaces[6]};
 		`}
 	}
 
