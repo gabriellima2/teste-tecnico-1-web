@@ -15,3 +15,13 @@ export interface CharacterData {
 	status: "Dead" | "Alive" | "unknown";
 	image: string;
 }
+
+export interface CharacterDetailsData extends CharacterData {
+	origin: {
+		name: string;
+	};
+	location: {
+		name: string;
+	};
+	episode: [string];
+}
