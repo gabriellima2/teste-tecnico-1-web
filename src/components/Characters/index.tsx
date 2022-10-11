@@ -24,7 +24,7 @@ export const Character = ({ status, ...props }: CharacterData) => (
 					{statusInfo[status].text}
 					<Icon
 						icon={statusInfo[status].icon}
-						aria-label="Icone que representa o paradeiro do personagem"
+						ariaLabel="Icone que representa o paradeiro do personagem"
 					/>
 				</Status>
 				<Image src={props.image} alt={`Imagem do personagem ${props.name}`} />
