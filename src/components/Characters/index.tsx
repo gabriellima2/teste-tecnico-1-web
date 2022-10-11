@@ -1,36 +1,14 @@
 import { Link } from "react-router-dom";
 import { FaSkullCrossbones, FaHeartbeat, FaQuestion } from "react-icons/fa";
 
-import { Content, Image, List, ListItem, Name, Status } from "./styles";
 import { Icon } from "../Icon";
 
-interface CharacterProps {
-	id: number;
-	name: string;
-	status: "Dead" | "Alive" | "unknown";
-	image: string;
-}
+import type { CharacterData } from "../../types";
+import { Content, Image, List, ListItem, Name, Status } from "./styles";
 
-const characters: CharacterProps[] = [
-	{
-		id: 1,
-		name: "Rick Sanchez",
-		status: "Alive",
-		image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-	},
-	{
-		id: 2,
-		name: "Rick Sanchez",
-		status: "Dead",
-		image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-	},
-	{
-		id: 3,
-		name: "Rick Sanchez",
-		status: "unknown",
-		image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-	},
-];
+interface CharactersProps {
+	characters: CharacterData[];
+}
 
 const statusInfo = {
 	Dead: { text: "Morto", icon: FaSkullCrossbones },
@@ -38,7 +16,7 @@ const statusInfo = {
 	unknown: { text: "Desconhecido", icon: FaQuestion },
 };
 
-const Character = ({ status, ...props }: CharacterProps) => (
+export const Character = ({ status, ...props }: CharacterData) => (
 	<ListItem>
 		<Link to={`details/${props.id}`}>
 			<Content>
@@ -57,7 +35,7 @@ const Character = ({ status, ...props }: CharacterProps) => (
 	</ListItem>
 );
 
-export const Characters = () => {
+export const Characters = ({ characters }: CharactersProps) => {
 	return (
 		<List>
 			{characters.map((character) => (

@@ -8,3 +8,10 @@ export interface Option {
 	value: string;
 	text: string;
 }
+
+export interface CharacterData {
+	id: number;
+	name: string;
+	status: "Dead" | "Alive" | "unknown";
+	image: string;
+}
