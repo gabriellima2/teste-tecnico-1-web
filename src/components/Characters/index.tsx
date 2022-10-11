@@ -2,7 +2,9 @@ import { FaSkullCrossbones, FaHeartbeat, FaQuestion } from "react-icons/fa";
 
 import { Icon } from "../Icon";
 
+import { StatusInfoInPortuguese } from "../../constants";
 import type { CharacterData } from "../../types";
+
 import {
 	Content,
 	Image,
@@ -18,9 +20,9 @@ interface CharactersProps {
 }
 
 const statusInfo = {
-	Dead: { text: "Morto", icon: FaSkullCrossbones },
-	Alive: { text: "Vivo", icon: FaHeartbeat },
-	unknown: { text: "Desconhecido", icon: FaQuestion },
+	Dead: { text: StatusInfoInPortuguese.Dead, icon: FaSkullCrossbones },
+	Alive: { text: StatusInfoInPortuguese.Alive, icon: FaHeartbeat },
+	unknown: { text: StatusInfoInPortuguese.unknown, icon: FaQuestion },
 };
 
 export const Character = ({ status, ...props }: CharacterData) => (
