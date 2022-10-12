@@ -5,7 +5,8 @@ import { useFetch } from "../../hooks/useFetch";
 import { Characters } from "../../components/Characters";
 import { SearchBar } from "../../components/SearchBar";
 import { TopButton } from "../../components/TopButton";
-import { Float } from "../../components/Float";
+import { Loading } from "../../components/Loading";
+import { Error } from "../../components/Error";
 
 import { DefaultLayout } from "../../layouts/DefaultLayout";
 
@@ -13,6 +14,7 @@ import type { CharacterData } from "../../types";
 import { API_URL } from "../../constants";
 
 import { Main, Header } from "./styles";
+import { Float } from "../../GlobalStyles";
 
 interface Data {
 	results: CharacterData[];
@@ -28,9 +30,9 @@ export const HomePage = () => {
 	const [searchValue, setSearchValue] = useState("");
 	const { data, isLoading, errors } = useFetch<Data>(API_URL, []);
 
-	if (isLoading) return <p>Carregando...</p>;
+	if (isLoading) return <Loading />;
 
-	if (errors) return <p>Ocorreu um erro!</p>;
+	if (errors) return <Error />;
 
 	const dataFiltered: CharacterData[] = searchValue
 		? searchByName(data.results, searchValue)

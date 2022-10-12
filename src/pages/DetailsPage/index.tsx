@@ -2,6 +2,9 @@ import { useParams } from "react-router-dom";
 
 import { useFetch } from "../../hooks/useFetch";
 
+import { Loading } from "../../components/Loading";
+import { Error } from "../../components/Error";
+
 import { CustomizedLayout } from "../../layouts/CustomizedLayout";
 
 import {
@@ -20,9 +23,9 @@ export const DetailsPage = () => {
 		[]
 	);
 
-	if (isLoading) return <p>Carregando...</p>;
+	if (isLoading) return <Loading />;
 
-	if (errors) return <p>Ocorreu um erro!</p>;
+	if (errors) return <Error />;
 
 	const textsInfo = [
 		{ title: "Localização", value: data.location.name },

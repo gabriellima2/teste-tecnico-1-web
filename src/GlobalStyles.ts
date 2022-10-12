@@ -1,4 +1,4 @@
-import { createGlobalStyle, css } from "styled-components";
+import styled, { createGlobalStyle, css } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
 	* {
@@ -64,8 +64,21 @@ export const GlobalStyles = createGlobalStyle`
 
 			color: ${theme.colors.font};
 		`}
-
-
-
 	}
+`;
+
+export const Float = styled.span`
+	position: fixed;
+	bottom: 24px;
+	right: 32px;
+	z-index: 1000;
+`;
+
+export const CenterInFullScreen = styled.div`
+	width: 100%;
+	height: 100vh;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
 `;
