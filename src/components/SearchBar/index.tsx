@@ -22,7 +22,7 @@ export const SearchBar = (props: SearchBarProps) => {
 					onChange={(e) => props.updateValue(e.target.value)}
 				/>
 			</label>
-			<SearchButton type="button">
+			<SearchButton type="button" title="Pesquisar">
 				<Icon ariaLabel="Icone de pesquisar" icon={FaSearch} />
 			</SearchButton>
 		</Container>

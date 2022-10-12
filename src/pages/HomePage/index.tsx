@@ -47,7 +47,7 @@ export const HomePage = () => {
 					<SearchBar value={searchValue} updateValue={setSearchValue} />
 				</Header>
 
-				<section>
+				<section aria-live="polite" aria-atomic="true">
 					<Characters characters={searchValue ? dataFiltered : data.results} />
 				</section>
 			</Main>

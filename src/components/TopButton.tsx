@@ -22,6 +22,8 @@ const Container = styled.button`
 
 const Button = () => (
 	<Container
+		type="button"
+		title="Voltar para o topo"
 		onClick={() => {
 			document.body.scrollTop = 0;
 			document.documentElement.scrollTop = 0;
