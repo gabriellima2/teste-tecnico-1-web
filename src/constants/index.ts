@@ -9,3 +9,5 @@ export enum SpecieInfoInPortuguese {
 	Alien = "Alien",
 	unknown = "Desconhecida",
 }
+
+export const API_URL = "https://rickandmortyapi.com/api/character/";

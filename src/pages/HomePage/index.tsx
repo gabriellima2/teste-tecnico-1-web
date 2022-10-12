@@ -10,6 +10,8 @@ import { Float } from "../../components/Float";
 import { DefaultLayout } from "../../layouts/DefaultLayout";
 
 import type { CharacterData } from "../../types";
+import { API_URL } from "../../constants";
+
 import { Main, Header } from "./styles";
 
 interface Data {
@@ -24,10 +26,7 @@ function searchByName(characters: CharacterData[], name: string) {
 
 export const HomePage = () => {
 	const [searchValue, setSearchValue] = useState("");
-	const { data, isLoading, errors } = useFetch<Data>(
-		"https://rickandmortyapi.com/api/character/",
-		[]
-	);
+	const { data, isLoading, errors } = useFetch<Data>(API_URL, []);
 
 	if (isLoading) return <p>Carregando...</p>;
 

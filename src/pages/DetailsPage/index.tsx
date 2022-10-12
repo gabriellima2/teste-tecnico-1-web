@@ -5,6 +5,7 @@ import { useFetch } from "../../hooks/useFetch";
 import { CustomizedLayout } from "../../layouts/CustomizedLayout";
 
 import {
+	API_URL,
 	SpecieInfoInPortuguese,
 	StatusInfoInPortuguese,
 } from "../../constants";
@@ -15,7 +16,7 @@ import { MainDetails, Content, Episodes, Image, Name, Text } from "./styles";
 export const DetailsPage = () => {
 	const { id } = useParams();
 	const { data, errors, isLoading } = useFetch<CharacterDetailsData>(
-		`https://rickandmortyapi.com/api/character/${id}`,
+		`${API_URL}${id}`,
 		[]
 	);
 
