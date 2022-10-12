@@ -1,8 +1,8 @@
 import { FaArrowUp } from "react-icons/fa";
+import styled, { css } from "styled-components";
 
 import { Icon } from "./Icon";
 import { RenderAfterScroll } from "../HOC/RenderAfterScroll";
-import styled, { css } from "styled-components";
 
 interface TopButtonProps {
 	renderTime?: "afterScroll" | "default";

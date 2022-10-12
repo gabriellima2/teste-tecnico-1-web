@@ -4,13 +4,13 @@ import { useFetch } from "../../hooks/useFetch";
 
 import { Characters } from "../../components/Characters";
 import { SearchBar } from "../../components/SearchBar";
+import { TopButton } from "../../components/TopButton";
+import { Float } from "../../components/Float";
 
 import { DefaultLayout } from "../../layouts/DefaultLayout";
 
 import type { CharacterData } from "../../types";
 import { Main, Header } from "./styles";
-import { TopButton } from "../../components/TopButton";
-import { Float } from "../../components/Float";
 
 interface Data {
 	results: CharacterData[];
