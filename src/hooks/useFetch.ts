@@ -9,7 +9,9 @@ export function useFetch<TData>(url: string, deps?: React.DependencyList) {
 		(async () => {
 			try {
 				const response = await fetch(url);
-				const data: TData = await response.json();
+				const data = await response.json();
+
+				if (data.error) throw new Error();
 
 				setData(data);
 			} catch (err) {
