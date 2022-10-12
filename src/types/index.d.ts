@@ -26,3 +26,5 @@ export interface CharacterDetailsData extends CharacterData {
 	};
 	episode: [string];
 }
+
+export type ActionPagination = "prev" | "next";
