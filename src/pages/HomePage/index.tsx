@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import { useFetch } from "../../hooks/useFetch";
+import { usePagination } from "../../hooks/usePagination";
 
 import { PaginationButton } from "../../components/Buttons/PaginationButton";
 import { TopButton } from "../../components/Buttons/TopButton";
@@ -11,8 +12,8 @@ import { Error } from "../../components/Error";
 
 import { DefaultLayout } from "../../layouts/DefaultLayout";
 
-import type { ActionPagination, CharacterData } from "../../types";
-import { API_URL, PAGE_INITIAL } from "../../constants";
+import type { CharacterData } from "../../types";
+import { API_URL, PAGE_INITIAL, PAGE_LIMIT } from "../../constants";
 
 import { Main, Header } from "./styles";
 import { Float } from "../../GlobalStyles";
@@ -20,7 +21,6 @@ import { Float } from "../../GlobalStyles";
 interface Data {
 	results: CharacterData[];
 }
-
 function searchByName(characters: CharacterData[], name: string) {
 	return characters.filter((character) =>
 		character.name.toLocaleLowerCase().includes(name)
@@ -28,8 +28,8 @@ function searchByName(characters: CharacterData[], name: string) {
 }
 
 export const HomePage = () => {
-	const [currentPage, setCurrentPage] = useState(PAGE_INITIAL);
 	const [searchValue, setSearchValue] = useState("");
+	const { currentPage, handlePageChange } = usePagination(PAGE_LIMIT);
 	const { data, isLoading, errors } = useFetch<Data>(
 		`${API_URL}?page=${currentPage}`,
 		[currentPage]
@@ -38,12 +38,6 @@ export const HomePage = () => {
 	if (isLoading) return <Loading />;
 
 	if (errors) return <Error />;
-
-	const handleChangePage = (action: ActionPagination) => {
-		if (action === "next") return setCurrentPage((prevState) => prevState + 1);
-
-		setCurrentPage((prevState) => prevState - 1);
-	};
 
 	const filteredData: CharacterData[] = searchValue
 		? searchByName(data.results, searchValue)
@@ -71,8 +65,8 @@ export const HomePage = () => {
 					<PaginationButton
 						currentPage={currentPage}
 						pageInitial={PAGE_INITIAL}
-						pageLimit={20}
-						handleClick={handleChangePage}
+						pageLimit={PAGE_LIMIT}
+						handleClick={handlePageChange}
 					/>
 				)}
 			</Main>
