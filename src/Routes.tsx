@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { DetailsPage } from "./pages/DetailsPage";
@@ -9,6 +9,7 @@ export const AppRoutes = () => {
 		<BrowserRouter>
 			<Routes>
 				<Route path="*" element={<NotFoundPage />} />
+				<Route path="/" element={<Navigate to="/1" />} />
 				<Route path="/:page" element={<HomePage />} />
 				<Route path="/:page/details/:id" element={<DetailsPage />} />
 			</Routes>
