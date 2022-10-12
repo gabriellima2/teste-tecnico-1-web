@@ -9,6 +9,8 @@ import { DefaultLayout } from "../../layouts/DefaultLayout";
 
 import type { CharacterData } from "../../types";
 import { Main, Header } from "./styles";
+import { TopButton } from "../../components/TopButton";
+import { Float } from "../../components/Float";
 
 interface Data {
 	results: CharacterData[];
@@ -37,6 +39,9 @@ export const HomePage = () => {
 
 	return (
 		<DefaultLayout>
+			<Float>
+				<TopButton renderTime="afterScroll" />
+			</Float>
 			<Main>
 				<Header>
 					<SearchBar value={searchValue} updateValue={setSearchValue} />
