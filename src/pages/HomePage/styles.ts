@@ -6,13 +6,15 @@ export const Header = styled.header`
 
 export const Main = styled.main`
 	${({ theme }) => css`
+		width: 100%;
+
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 
 		${theme["@bp3"]} {
-			max-width: 1400px;
+			max-width: 1250px;
 		}
 	`}
 `;

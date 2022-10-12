@@ -37,23 +37,20 @@ export const Input = styled.input`
 	`}
 `;
 
-export const SearchButton = styled.button`
+export const SearchIcon = styled.span`
 	${({ theme }) => css`
 		height: 40px;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
 
 		padding: 0px ${theme.spaces[4]};
 
 		border-top-right-radius: 16px;
 		border-bottom-right-radius: 16px;
 
-		cursor: pointer;
 		background-color: ${theme.colors.util};
-
-		transition: opacity 0.2s ease;
-
-		&:hover {
-			opacity: 0.8;
-		}
 
 		${theme["@bp1"]} {
 			height: 52px;

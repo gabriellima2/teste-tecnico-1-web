@@ -2,7 +2,7 @@ import { FaSearch } from "react-icons/fa";
 
 import { Icon } from "../Icon";
 
-import { Container, Input, SearchButton } from "./styles";
+import { Container, Input, SearchIcon } from "./styles";
 
 interface SearchBarProps {
 	value: string;
@@ -22,9 +22,9 @@ export const SearchBar = (props: SearchBarProps) => {
 					onChange={(e) => props.updateValue(e.target.value)}
 				/>
 			</label>
-			<SearchButton type="button" title="Pesquisar">
+			<SearchIcon>
 				<Icon ariaLabel="Icone de pesquisar" icon={FaSearch} />
-			</SearchButton>
+			</SearchIcon>
 		</Container>
 	);
 };
