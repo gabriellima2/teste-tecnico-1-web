@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-export function useFetch<TData extends {}>(
-	url: string,
-	deps?: React.DependencyList
-) {
+export function useFetch<TData>(url: string, deps?: React.DependencyList) {
 	const [isLoading, setIsLoading] = useState(true);
 	const [data, setData] = useState<TData>({} as TData);
 	const [errors, setErrors] = useState<null | unknown>(null);
@@ -12,7 +9,7 @@ export function useFetch<TData extends {}>(
 		(async () => {
 			try {
 				const response = await fetch(url);
-				const data = await response.json();
+				const data: TData = await response.json();
 
 				setData(data);
 			} catch (err) {
