@@ -83,3 +83,18 @@ export const CenterInFullScreen = styled.div`
 	justify-content: center;
 	flex-direction: column;
 `;
+
+export const DefaultMain = styled.main`
+	${({ theme }) => css`
+		width: 100%;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		${theme["@bp3"]} {
+			max-width: 1250px;
+		}
+	`}
+`;

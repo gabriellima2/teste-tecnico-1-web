@@ -1,15 +1,11 @@
 import styled, { css } from "styled-components";
 
 export const Container = styled.div`
-	${({ theme }) => css`
-		width: 100%;
+	width: 100%;
 
-		display: flex;
-		align-items: center;
-		justify-content: center;
-
-		padding: ${theme.spaces[8]} 0px;
-	`}
+	display: flex;
+	align-items: center;
+	justify-content: center;
 `;
 
 export const Input = styled.input`
@@ -37,7 +33,7 @@ export const Input = styled.input`
 	`}
 `;
 
-export const SearchIcon = styled.span`
+export const SearchIcon = styled.button`
 	${({ theme }) => css`
 		height: 40px;
 
@@ -50,7 +46,14 @@ export const SearchIcon = styled.span`
 		border-top-right-radius: 16px;
 		border-bottom-right-radius: 16px;
 
+		cursor: pointer;
 		background-color: ${theme.colors.util};
+
+		transition: opacity 0.2s ease;
+
+		&:hover {
+			opacity: 0.8;
+		}
 
 		${theme["@bp1"]} {
 			height: 52px;

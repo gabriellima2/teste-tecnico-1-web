@@ -1,12 +1,15 @@
+import { HomeLink } from "./HomeLink";
 import { CenterInFullScreen } from "../GlobalStyles";
 
 interface ErrorProps {
 	message?: string;
+	withHomeLink?: boolean;
 }
 
-export const Error = ({ message }: ErrorProps) => (
+export const Error = ({ withHomeLink, ...props }: ErrorProps) => (
 	<CenterInFullScreen>
-		<p>{message}</p>
+		<p>{props.message}</p>
+		{withHomeLink && <HomeLink />}
 	</CenterInFullScreen>
 );
 

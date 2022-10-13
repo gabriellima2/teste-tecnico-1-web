@@ -1,3 +1,4 @@
+import { KeyboardEvent, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 
 import { Icon } from "../Icon";
@@ -5,11 +6,18 @@ import { Icon } from "../Icon";
 import { Container, Input, SearchIcon } from "./styles";
 
 interface SearchBarProps {
-	value: string;
-	updateValue: (newValue: string) => void;
+	handleSearch: (value: string) => void;
 }
 
 export const SearchBar = (props: SearchBarProps) => {
+	const [searchValue, setSearchValue] = useState("");
+
+	const handleKeyDown = ({ key }: KeyboardEvent<HTMLInputElement>) => {
+		if (key !== "Enter") return;
+
+		props.handleSearch(searchValue);
+	};
+
 	return (
 		<Container>
 			<label style={{ width: "100%" }}>
@@ -18,11 +26,12 @@ export const SearchBar = (props: SearchBarProps) => {
 					name="valueSearch"
 					id="valueSearch"
 					placeholder="Faça alguma pesquisa..."
-					value={props.value}
-					onChange={(e) => props.updateValue(e.target.value)}
+					value={searchValue}
+					onChange={(e) => setSearchValue(e.target.value)}
+					onKeyDown={handleKeyDown}
 				/>
 			</label>
-			<SearchIcon>
+			<SearchIcon onClick={() => props.handleSearch(searchValue)}>
 				<Icon ariaLabel="Icone de pesquisar" icon={FaSearch} />
 			</SearchIcon>
 		</Container>

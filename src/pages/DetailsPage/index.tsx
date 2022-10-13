@@ -5,19 +5,18 @@ import { useFetch } from "../../hooks/useFetch";
 import { Loading } from "../../components/Loading";
 import { Error } from "../../components/Error";
 
-import { CustomizedLayout } from "../../layouts/CustomizedLayout";
-
 import {
 	API_URL,
 	SpecieInfoInPortuguese,
 	StatusInfoInPortuguese,
 } from "../../constants";
 import type { CharacterDetailsData } from "../../types";
+import type { ParamTypes } from "../../Routes";
 
 import { MainDetails, Content, Episodes, Image, Name, Text } from "./styles";
 
 export const DetailsPage = () => {
-	const { id } = useParams();
+	const { id } = useParams<ParamTypes>();
 	const { data, errors, isLoading } = useFetch<CharacterDetailsData>(
 		`${API_URL}${id}`,
 		[]
@@ -35,7 +34,7 @@ export const DetailsPage = () => {
 	];
 
 	return (
-		<CustomizedLayout>
+		<>
 			<MainDetails>
 				<Image src={data.image} alt={`Imagem do personagem ${data.name}`} />
 
@@ -56,6 +55,6 @@ export const DetailsPage = () => {
 					<Episodes>Total de epsódios {data.episode.length}</Episodes>
 				</Content>
 			</MainDetails>
-		</CustomizedLayout>
+		</>
 	);
 };

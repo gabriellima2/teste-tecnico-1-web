@@ -27,7 +27,7 @@ const statusInfo = {
 
 export const Character = ({ status, ...props }: CharacterData) => (
 	<ListItem>
-		<ItemLink to={`details/${props.id}`}>
+		<ItemLink to={`/details/${props.id}`}>
 			<Content>
 				<Status>
 					{statusInfo[status].text}
@@ -46,10 +46,16 @@ export const Character = ({ status, ...props }: CharacterData) => (
 
 export const Characters = ({ characters }: CharactersProps) => {
 	return (
-		<List>
-			{characters.map((character) => (
-				<Character {...character} key={character.id} />
-			))}
-		</List>
+		<section
+			aria-live="polite"
+			aria-atomic="true"
+			style={{ minHeight: "100vh" }}
+		>
+			<List>
+				{characters.map((character) => (
+					<Character {...character} key={character.id} />
+				))}
+			</List>
+		</section>
 	);
 };

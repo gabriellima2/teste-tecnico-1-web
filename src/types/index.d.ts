@@ -24,7 +24,7 @@ export interface CharacterDetailsData extends CharacterData {
 	location: {
 		name: string;
 	};
-	episode: [string];
+	episode: string[];
 }
 
 export type ActionPagination = "prev" | "next";
