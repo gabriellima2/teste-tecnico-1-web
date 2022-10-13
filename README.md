@@ -4,9 +4,11 @@
 
 <h2>Objetivos:</h2>
 
-- Consumo de API
-- Listar os dados
-- Rota de detalhes
+- Consumo de API ✔️
+- Listar os dados ✔️
+- Rota de detalhes ✔️
+
+Meus complementos: Barra de Pesquisa e Paginação
 
 <h2>Tecnologias:</h2>
 
