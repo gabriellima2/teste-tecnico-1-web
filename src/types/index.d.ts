@@ -17,6 +17,10 @@ export interface CharacterData {
 	image: string;
 }
 
+export interface CharactersResponse {
+	results: CharacterData[];
+}
+
 export interface CharacterDetailsData extends CharacterData {
 	origin: {
 		name: string;

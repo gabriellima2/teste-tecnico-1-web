@@ -5,10 +5,7 @@ import { Icon } from "../Icon";
 import { RenderAfterScroll } from "../../HOC/RenderAfterScroll";
 
 import { scrollToTop } from "../../utils/scrollToTop";
-
-interface TopButtonProps {
-	renderTime?: "afterScroll" | "default";
-}
+import { FloatElement } from "../../GlobalStyles";
 
 const Container = styled.button`
 	${({ theme }) => css`
@@ -22,28 +19,22 @@ const Container = styled.button`
 	`}
 `;
 
-const Button = () => (
+const Default = () => (
 	<Container type="button" title="Voltar para o topo" onClick={scrollToTop}>
 		<Icon icon={FaArrowUp} ariaLabel="Seta apontando para cima" />
 	</Container>
 );
 
-export const TopButton = ({ renderTime }: TopButtonProps) => {
-	return (
-		<>
-			{renderTime === "afterScroll" ? (
-				<RenderAfterScroll>
-					<Button />
-				</RenderAfterScroll>
-			) : (
-				<Button />
-			)}
-		</>
-	);
-};
+const AfterScroll = () => (
+	<RenderAfterScroll>
+		<Default />
+	</RenderAfterScroll>
+);
 
-const defaultProps: TopButtonProps = {
-	renderTime: "default",
-};
+const Float = () => (
+	<FloatElement>
+		<AfterScroll />
+	</FloatElement>
+);
 
-TopButton.defaultProps = defaultProps;
+export const TopButton = { Default, AfterScroll, Float };

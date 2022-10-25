@@ -1,19 +1,19 @@
-import { HomeLink } from "./HomeLink";
+import type { ReactNode } from "react";
 import { CenterInFullScreen } from "../GlobalStyles";
 
 interface ErrorProps {
 	message?: string;
-	withHomeLink?: boolean;
+	children?: ReactNode;
 }
 
-export const Error = ({ withHomeLink, ...props }: ErrorProps) => (
+export const Error = ({ children, ...props }: ErrorProps) => (
 	<CenterInFullScreen>
 		<p>{props.message}</p>
-		{withHomeLink && <HomeLink />}
+		{children}
 	</CenterInFullScreen>
 );
 
-const defaultProps: ErrorProps = {
+const defaultProps: Pick<ErrorProps, "message"> = {
 	message: "Houve algum erro! Tente novamente",
 };
 

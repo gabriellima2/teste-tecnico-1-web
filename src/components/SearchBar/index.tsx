@@ -1,21 +1,25 @@
 import { KeyboardEvent, useState } from "react";
 import { FaSearch } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 import { Icon } from "../Icon";
 
 import { Container, Input, SearchIcon } from "./styles";
 
-interface SearchBarProps {
-	handleSearch: (value: string) => void;
-}
-
-export const SearchBar = (props: SearchBarProps) => {
+export const SearchBar = () => {
 	const [searchValue, setSearchValue] = useState("");
+	const navigate = useNavigate();
+
+	const handleSearch = (searchValue: string) => {
+		if (!searchValue.trim()) return;
+
+		navigate(`/search/${searchValue}`);
+	};
 
 	const handleKeyDown = ({ key }: KeyboardEvent<HTMLInputElement>) => {
 		if (key !== "Enter") return;
 
-		props.handleSearch(searchValue);
+		handleSearch(searchValue);
 	};
 
 	return (
@@ -31,7 +35,7 @@ export const SearchBar = (props: SearchBarProps) => {
 					onKeyDown={handleKeyDown}
 				/>
 			</label>
-			<SearchIcon onClick={() => props.handleSearch(searchValue)}>
+			<SearchIcon onClick={() => handleSearch(searchValue)}>
 				<Icon ariaLabel="Icone de pesquisar" icon={FaSearch} />
 			</SearchIcon>
 		</Container>

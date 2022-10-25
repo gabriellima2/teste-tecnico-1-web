@@ -16,9 +16,9 @@ export function useFetch<TData>(url: string, deps?: React.DependencyList) {
 				setData(data);
 			} catch (err) {
 				setErrors(err);
+			} finally {
+				setIsLoading(false);
 			}
-
-			setIsLoading(false);
 		})();
 	}, deps);
 

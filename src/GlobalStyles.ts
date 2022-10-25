@@ -67,7 +67,7 @@ export const GlobalStyles = createGlobalStyle`
 	}
 `;
 
-export const Float = styled.span`
+export const FloatElement = styled.span`
 	position: fixed;
 	bottom: 24px;
 	right: 32px;

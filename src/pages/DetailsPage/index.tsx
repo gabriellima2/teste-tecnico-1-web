@@ -1,60 +1,26 @@
 import { useParams } from "react-router-dom";
 
-import { useFetch } from "../../hooks/useFetch";
+import { useSpecificCharacter } from "../../hooks/useSpecificCharacter";
 
+import { Character } from "../../components/Character";
 import { Loading } from "../../components/Loading";
 import { Error } from "../../components/Error";
 
-import {
-	API_URL,
-	SpecieInfoInPortuguese,
-	StatusInfoInPortuguese,
-} from "../../constants";
-import type { CharacterDetailsData } from "../../types";
 import type { ParamTypes } from "../../Routes";
 
-import { MainDetails, Content, Episodes, Image, Name, Text } from "./styles";
+import { MainDetails } from "./styles";
 
 export const DetailsPage = () => {
 	const { id } = useParams<ParamTypes>();
-	const { data, errors, isLoading } = useFetch<CharacterDetailsData>(
-		`${API_URL}${id}`,
-		[]
-	);
+	const { data, errors, isLoading } = useSpecificCharacter.ById(id || "");
 
 	if (isLoading) return <Loading />;
 
 	if (errors) return <Error />;
 
-	const textsInfo = [
-		{ title: "Localização", value: data.location.name },
-		{ title: "Origem", value: data.origin.name },
-		{ title: "Espécie", value: SpecieInfoInPortuguese[data.species] },
-		{ title: "Status", value: StatusInfoInPortuguese[data.status] },
-	];
-
 	return (
-		<>
-			<MainDetails>
-				<Image src={data.image} alt={`Imagem do personagem ${data.name}`} />
-
-				<Content>
-					<Name>{data.name}</Name>
-					<section>
-						<ul>
-							{textsInfo.map((text, index) => (
-								<li key={index}>
-									<Text>
-										<span>{text.title}:</span> {""}
-										{text.value === "unknown" ? "Sem Informações" : text.value}
-									</Text>
-								</li>
-							))}
-						</ul>
-					</section>
-					<Episodes>Total de epsódios {data.episode.length}</Episodes>
-				</Content>
-			</MainDetails>
-		</>
+		<MainDetails>
+			<Character character={data} />
+		</MainDetails>
 	);
 };

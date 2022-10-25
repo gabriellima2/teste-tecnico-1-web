@@ -1,14 +1,16 @@
-export enum StatusInfoInPortuguese {
+enum CharacterStatus {
 	Alive = "Vivo",
 	Dead = "Morto",
 	unknown = "Desconhecido",
 }
 
-export enum SpecieInfoInPortuguese {
+enum CharacterSpecies {
 	Human = "Humano",
 	Alien = "Alien",
 	unknown = "Desconhecida",
 }
+
+export const InfoInPortuguese = { CharacterStatus, CharacterSpecies };
 
 export const API_URL = "https://rickandmortyapi.com/api/character/";
 
